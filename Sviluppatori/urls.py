@@ -25,4 +25,6 @@ urlpatterns = [
     url(r'^sign_up', views.sign_up_page),
     url(r'^contact_us', views.contact_us),
     url(r'^contacted', views.contacted),
+    url(r'^login', views.log_in),
+    url(r'^loged_in', views.loged_in),
 ]
