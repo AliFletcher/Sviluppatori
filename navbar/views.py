@@ -12,10 +12,11 @@ def sign_up_page(request):
 
     if request.method == "POST":
         form = forms.SignUpForm(request.POST)
+
         if form.is_valid():
-            print(form.changed_data['first_name'])
-            print(form.changed_data['last_name'])
-            print(form.changed_data['username'])
+            print(form.cleaned_data['first_name'])
+            print(form.cleaned_data['last_name'])
+            print(form.cleaned_data['username'])
 
             return first_page(request)
 
