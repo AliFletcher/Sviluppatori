@@ -17,7 +17,10 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
 
+from navbar import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url('^$', include('navbar.urls'))
+    url(r'^$', views.first_page),
+    url(r'^sign_up', views.sign_up_page),
 ]
