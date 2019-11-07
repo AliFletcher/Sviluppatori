@@ -34,3 +34,7 @@ def my_view(request):
 
 def contact_us(request):
     return render(request, "contact_us.html")
+
+
+def contacted(request):
+    return render(request, "contacted.html")

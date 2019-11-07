@@ -23,5 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^$', views.first_page),
     url(r'^sign_up', views.sign_up_page),
-    url(r'^contact_us', views.contact_us),
+    url(r'^contact_us/$', views.contact_us),
+    url(r'^contact_us/contacted', views.contacted),
 ]
