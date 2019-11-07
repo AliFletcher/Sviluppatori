@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form id="contact_us_form" action="/contacted/">
+        <p><label>Name: </label><input type="text" name="title" required></p>
+        <p><label>E-mail: </label><input type="email" name="email" required></p>
+        <p><label>Message: </label><textarea name="text" cols="30" rows="10" minlength="10" maxlength="250" required></textarea></p>
+        <button name="submit">Submit</button>
+    </form>
+{% endblock %}
