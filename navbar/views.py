@@ -13,7 +13,10 @@ def sign_up_page(request):
     if request.method == "POST":
         form = forms.SignUpForm(request.POST)
         if form.is_valid():
-            form.save()
-            return render(request, "home_page.html")
+            print(form.changed_data['first_name'])
+            print(form.changed_data['last_name'])
+            print(form.changed_data['username'])
+
+            return first_page(request)
 
     return render(request, "sign_up.html", {'form': form})
