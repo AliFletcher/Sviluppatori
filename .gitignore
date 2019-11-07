@@ -1,7 +1,7 @@
 
-# Created by https://www.gitignore.io/api/python,django,pycharm
-# Edit at https://www.gitignore.io/?templates=python,django,pycharm
-Sviluppatori
+# Created by https://www.gitignore.io/api/venv,python,django,pycharm
+# Edit at https://www.gitignore.io/?templates=venv,python,django,pycharm
+
 ### Django ###
 *.log
 *.pot
@@ -254,4 +254,23 @@ fabric.properties
 
 # Pyre type checker
 
-# End of https://www.gitignore.io/api/python,django,pycharm
+### venv ###
+# Virtualenv
+# http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
+[Bb]in
+[Ii]nclude
+[Ll]ib
+[Ll]ib64
+[Ll]ocal
+[Ss]cripts
+pyvenv.cfg
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+pip-selfcheck.json
+
+# End of https://www.gitignore.io/api/venv,python,django,pycharm
