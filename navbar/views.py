@@ -15,6 +15,7 @@ def sign_up_page(request):
         form = forms.SignUpForm(request.POST)
 
         if form.is_valid():
+            form.save(commit=True)
             return first_page(request)
 
     return render(request, "sign_up.html", {'form': form})
@@ -29,3 +30,7 @@ def my_view(request):
         # Redirect to a success page.
     else:
         return render(request, "login.html", {'message': 'invalid password or username'})
+
+
+def contact_us(request):
+    return render(request, "contact_us.html")
