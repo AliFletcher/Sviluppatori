@@ -1,5 +1,5 @@
-from django.http import HttpResponse
 from django.shortcuts import render
+from navbar import forms
 
 
 # Create your views here.
@@ -8,4 +8,5 @@ def first_page(request):
 
 
 def sign_up_page(request):
-    return render(request, "sign_up.html")
+    form = forms.SignUpForm
+    return render(request, "sign_up.html", {'form': form})
