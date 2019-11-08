@@ -1,5 +1,5 @@
 from django import forms
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
@@ -52,12 +52,8 @@ def contact_us(request):
     if request.method == "POST":
         if 250 < len(request.POST['text']) or len(request.POST['text']) < 10:
             return render(request, "contact_us.html")
-        send_mail(
-            request.POST['title'],
-            request.POST['email'] + '\n' + request.POST['text'],
-            'a.a.ghanati@gmail.com',
-            ['webe19lopers@gmail.com']
-        )
+        email = EmailMessage(subject=request.POST['title'], body=request.POST['email'] + '\n' + request.POST['text'], to=['webe19lopers@gmail.com', 'a.a.ghanati@gmail.com'])
+        email.send()
         return redirect("/contacted/")
     return render(request, "contact_us.html")
 
