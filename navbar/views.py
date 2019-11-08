@@ -82,7 +82,10 @@ def profile(request):
 def user_edit(request):
     form = forms.EditForm
     if request.method == "POST":
-        request.user.first_name = request.POST['first_name']
-        request.user.last_name = request.POST['last_name']
+        if request.POST['first_name'] != '':
+            request.user.first_name = request.POST['first_name']
+        if request.POST['last_name'] != '':
+            request.user.last_name = request.POST['last_name']
+        request.user.save()
         return profile(request)
     return render(request, "user_edit.html", {"form": form})
