@@ -4,6 +4,9 @@
     <form id="search_form" method="POST">
         {% csrf_token %}
         <label>Search: <input name="search_query" type="text"></label>
+        <label>Department: <input type="checkbox" name="department"></label>
+        <label>Teacher: <input type="checkbox" name="teacher"></label>
+        <label>Course: <input type="checkbox" name="course"></label>
         <button name="submit" value="submit">Search</button>
     </form>
     <div id="all_courses">
