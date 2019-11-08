@@ -101,11 +101,17 @@ def createcourse(request):
         form = forms.CourseForm(request.POST)
         if form.is_valid():
             form.save(commit=True)
-    return render(request, "createcourse.html", {'form':form})
+    return render(request, "createcourse.html", {'form': form})
 
 
 @login_required(login_url='/')
 def showcourse(request):
     course_list = Course.objects.order_by('name')
-    return render(request, 'showcourse.html', context={'course_list':course_list})
+    if request.method == "POST":
+        temp = course_list
+        course_list = []
+        for course in temp:
+            if request.POST['search_query'] in course.department:
+                course_list.append(course)
+    return render(request, 'showcourse.html', context={'course_list': course_list})
 

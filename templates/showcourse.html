@@ -2,8 +2,9 @@
 
 {% block content %}
     <form id="search_form" method="POST">
-        <label>Search<input name="search_query" type="text"></label>
-        <button name="submit" value="submit">submit</button>
+        {% csrf_token %}
+        <label>Search: <input name="search_query" type="text"></label>
+        <button name="submit" value="submit">Search</button>
     </form>
     <div id="all_courses">
         {% for x in course_list %}
