@@ -34,6 +34,7 @@ def sign_up_page(request):
 
 def log_in(request):
     if request.method == "POST":
+        print(request.POST)
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
@@ -62,9 +63,10 @@ def contacted(request):
     return render(request, "contacted.html")
 
 
+@login_required(login_url='/')
 def log_out(request):
     logout(request)
-    return redirect("/")
+    return first_page(request)
 
 
 def panel(request):
