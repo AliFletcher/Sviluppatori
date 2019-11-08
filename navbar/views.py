@@ -1,3 +1,4 @@
+from django.core.mail import send_mail
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
@@ -49,6 +50,14 @@ def contact_us(request):
 
 
 def contacted(request):
+    if request.method == "POST":
+        send_mail(
+            request.POST['title'],
+            request.POST['email'] + '\n' + request.POST['text'],
+            'a.a.ghanati@gmail.com',
+            ['webe19lopers@gmail.com'],
+            fail_silently=False,
+        )
     return render(request, "contacted.html")
 
 
@@ -59,3 +68,7 @@ def log_out(request):
 
 def panel(request):
     return render(request, "panel.html")
+
+
+def profile(request):
+    return render(request, "profile.html", {"first_name": request.user.first_name, "last_name": request.user.last_name, "username": request.user.username})
