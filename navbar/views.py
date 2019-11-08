@@ -105,19 +105,17 @@ def showcourse(request):
     course_list = Course.objects.order_by('name')
     temp = []
     if request.method == "POST":
-        print(request.POST)
-        if request.POST['department'] == 'on':
+        if request.POST.get('department') == 'on':
             for course in course_list:
                 if request.POST['search_query'] in course.department:
                     temp.append(course)
-        if request.POST['teacher'] == 'on':
+        if request.POST.get('teacher') == 'on':
             for course in course_list:
                 if request.POST['search_query'] in course.teacher:
                     temp.append(course)
-        if request.POST['course'] == 'on':
+        if request.get('course') == 'on':
             for course in course_list:
                 if request.POST['search_query'] in course.name:
                     temp.append(course)
         temp = list(set(temp))
     return render(request, 'showcourse.html', context={'course_list': course_list, "temp": temp})
-

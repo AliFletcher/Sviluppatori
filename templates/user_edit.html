@@ -3,6 +3,7 @@
 {% block content %}
     <form id="setting_form" method="POST">
         {{ form }}
+        <input type="file">
         {% csrf_token %}
         <button name="OK">OK</button>
     </form>
