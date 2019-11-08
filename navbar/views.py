@@ -3,6 +3,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from navbar import forms
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -70,5 +71,11 @@ def panel(request):
     return render(request, "panel.html")
 
 
+@login_required(login_url='/')
 def profile(request):
     return render(request, "profile.html", {"first_name": request.user.first_name, "last_name": request.user.last_name, "username": request.user.username})
+
+
+@login_required(login_url='/')
+def user_edit(request):
+    return render(request, "user_edit.html")

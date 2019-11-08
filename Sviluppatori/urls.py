@@ -29,4 +29,5 @@ urlpatterns = [
     url(r'^logout', views.log_out),
     url(r'^panel', views.panel),
     url(r'^profile', views.profile),
+    url(r'^user_edit', views.user_edit),
 ]
