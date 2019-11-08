@@ -52,12 +52,12 @@ def contact_us(request):
     if request.method == "POST":
         if 250 < len(request.POST['text']) or len(request.POST['text']) < 10:
             return render(request, "contact_us.html")
-        # send_mail(
-        #     request.POST['title'],
-        #     request.POST['email'] + '\n' + request.POST['text'],
-        #     'a.a.ghanati@gmail.com',
-        #     ['webe19lopers@gmail.com', 'a.a.ghanati@gmail.com']
-        # )
+        send_mail(
+            request.POST['title'],
+            request.POST['email'] + '\n' + request.POST['text'],
+            'a.a.ghanati@gmail.com',
+            ['webe19lopers@gmail.com', 'a.a.ghanati@gmail.com']
+        )
         return redirect("/contacted/")
     return render(request, "contact_us.html")
 
