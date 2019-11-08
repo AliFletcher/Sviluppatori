@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import User
+from navbar.models import Course
 
 
 class SignUpForm(forms.ModelForm):
@@ -30,3 +31,9 @@ class SignUpForm(forms.ModelForm):
 class EditForm(forms.Form):
     first_name = forms.CharField(max_length=264, required=False)
     last_name = forms.CharField(max_length=264, required=False)
+
+
+class CourseForm(forms.ModelForm):
+    class Meta:
+        model = Course
+        fields = '__all__'

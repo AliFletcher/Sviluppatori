@@ -50,13 +50,13 @@ def log_in(request):
 
 def contact_us(request):
     if request.method == "POST":
-        send_mail(
-            request.POST['title'],
-            request.POST['email'] + '\n' + request.POST['text'],
-            'a.a.ghanati@gmail.com',
-            ['webe19lopers@gmail.com'],
-            fail_silently=False,
-        )
+        # send_mail(
+        #     request.POST['title'],
+        #     request.POST['email'] + '\n' + request.POST['text'],
+        #     'a.a.ghanati@gmail.com',
+        #     ['webe19lopers@gmail.com'],
+        #     fail_silently=False,
+        # )
         form = forms.Form(request.POST)
         if form.is_valid():
             return redirect("/contacted/")
