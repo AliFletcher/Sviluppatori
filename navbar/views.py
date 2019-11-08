@@ -48,10 +48,6 @@ def log_in(request):
 
 
 def contact_us(request):
-    return render(request, "contact_us.html")
-
-
-def contacted(request):
     if request.method == "POST":
         send_mail(
             request.POST['title'],
@@ -60,6 +56,11 @@ def contacted(request):
             ['webe19lopers@gmail.com'],
             fail_silently=False,
         )
+        return redirect("/contacted/")
+    return render(request, "contact_us.html")
+
+
+def contacted(request):
     return render(request, "contacted.html")
 
 

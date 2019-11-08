@@ -7,3 +7,13 @@ from django.contrib.auth.models import User
 
 class NewUser(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+
+class Course(models.Model):
+    department = models.CharField(max_length=264)
+    name = models.CharField(max_length=264)
+    course_number = models.CharField(max_length=264)
+    group_number = models.CharField(max_length=264)
+    teacher = models.CharField(max_length=264)
+    start_time = models.TimeField()
+    end_time = models.TimeField()
