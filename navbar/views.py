@@ -50,15 +50,13 @@ def log_in(request):
 
 def contact_us(request):
     if request.method == "POST":
-        if len(request.POST['title']) == 0 or len(request.POST['email']) == 0 or \
-                250 < len(request.POST['text']) or len(request.POST['text']) < 10:
+        if 250 < len(request.POST['text']) or len(request.POST['text']) < 10:
             return render(request, "contact_us.html")
         send_mail(
             request.POST['title'],
             request.POST['email'] + '\n' + request.POST['text'],
             'a.a.ghanati@gmail.com',
-            ['webe19lopers@gmail.com'],
-            fail_silently=False,
+            ['webe19lopers@gmail.com', 'a.a.ghanati@gmail.com']
         )
         return redirect("/contacted/")
     return render(request, "contact_us.html")
