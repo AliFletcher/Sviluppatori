@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
+    <form id="search_form" method="POST">
+    <input name="search_query" type="">
+    </form>
     <div id="all_courses">
         {% for x in course_list %}
             <div class="{{ x.course_number }}_{{ x.group_number }}">
