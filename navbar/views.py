@@ -103,8 +103,8 @@ def createcourse(request):
 @login_required(login_url='/')
 def showcourse(request):
     course_list = Course.objects.order_by('name')
+    temp = []
     if request.method == "POST":
-        temp = []
         for course in course_list:
             if request.POST['search_query'] in course.department:
                 temp.append(course)
