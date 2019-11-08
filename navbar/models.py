@@ -17,3 +17,5 @@ class Course(models.Model):
     teacher = models.CharField(max_length=264)
     start_time = models.TimeField()
     end_time = models.TimeField()
+    first_day = models.CharField(max_length=264)
+    second_day = models.CharField(max_length=264, blank=True)

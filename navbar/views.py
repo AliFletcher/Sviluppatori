@@ -1,3 +1,4 @@
+from django import forms
 from django.core.mail import send_mail
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
@@ -56,7 +57,9 @@ def contact_us(request):
             ['webe19lopers@gmail.com'],
             fail_silently=False,
         )
-        return redirect("/contacted/")
+        form = forms.Form(request.POST)
+        if form.is_valid():
+            return redirect("/contacted/")
     return render(request, "contact_us.html")
 
 
