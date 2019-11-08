@@ -56,7 +56,7 @@ def contact_us(request):
             request.POST['title'],
             request.POST['email'] + '\n' + request.POST['text'],
             'a.a.ghanati@gmail.com',
-            ['webe19lopers@gmail.com', 'a.a.ghanati@gmail.com']
+            ['webe19lopers@gmail.com']
         )
         return redirect("/contacted/")
     return render(request, "contact_us.html")
