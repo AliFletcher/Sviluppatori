@@ -78,4 +78,9 @@ def profile(request):
 
 @login_required(login_url='/')
 def user_edit(request):
-    return render(request, "user_edit.html")
+    form = forms.EditForm
+    if request.method == "POST":
+        request.user.first_name = request.POST['first_name']
+        request.user.last_name = request.POST['last_name']
+        return profile(request)
+    return render(request, "user_edit.html", {"form": form})

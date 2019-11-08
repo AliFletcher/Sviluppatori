@@ -25,3 +25,8 @@ class SignUpForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
+
+class EditForm(forms.Form):
+    first_name = forms.CharField(max_length=264, required=False)
+    last_name = forms.CharField(max_length=264, required=False)
