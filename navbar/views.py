@@ -57,9 +57,7 @@ def contact_us(request):
         #     ['webe19lopers@gmail.com'],
         #     fail_silently=False,
         # )
-        form = forms.Form(request.POST)
-        if form.is_valid():
-            return redirect("/contacted/")
+        return redirect("/contacted/")
     return render(request, "contact_us.html")
 
 
@@ -93,3 +91,7 @@ def user_edit(request):
         request.user.save()
         return profile(request)
     return render(request, "user_edit.html", {"form": form})
+
+
+def createcourse(request):
+    return render(request, "createcourse.html")

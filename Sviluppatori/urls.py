@@ -30,4 +30,5 @@ urlpatterns = [
     url(r'^panel', views.panel),
     url(r'^profile', views.profile),
     url(r'^user_edit', views.user_edit),
+    url(r'^createcourse', views.createcourse),
 ]
