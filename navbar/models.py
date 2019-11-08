@@ -31,3 +31,4 @@ class Course(models.Model):
         (3, 'tuesday'),
         (4, 'wednesday'),
     ], blank=True)
+    exam_date = models.DateField()
