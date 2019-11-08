@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from navbar import forms
 from django.contrib.auth.decorators import login_required
+from navbar.models import Course
 
 
 # Create your views here.
@@ -35,7 +36,6 @@ def sign_up_page(request):
 
 def log_in(request):
     if request.method == "POST":
-        print(request.POST)
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
@@ -50,13 +50,16 @@ def log_in(request):
 
 def contact_us(request):
     if request.method == "POST":
-        # send_mail(
-        #     request.POST['title'],
-        #     request.POST['email'] + '\n' + request.POST['text'],
-        #     'a.a.ghanati@gmail.com',
-        #     ['webe19lopers@gmail.com'],
-        #     fail_silently=False,
-        # )
+        if len(request.POST['title']) == 0 or len(request.POST['email']) == 0 or \
+                250 < len(request.POST['text']) or len(request.POST['text']) < 10:
+            return render(request, "contact_us.html")
+        send_mail(
+            request.POST['title'],
+            request.POST['email'] + '\n' + request.POST['text'],
+            'a.a.ghanati@gmail.com',
+            ['webe19lopers@gmail.com'],
+            fail_silently=False,
+        )
         return redirect("/contacted/")
     return render(request, "contact_us.html")
 
@@ -93,5 +96,18 @@ def user_edit(request):
     return render(request, "user_edit.html", {"form": form})
 
 
+@login_required(login_url='/')
 def createcourse(request):
-    return render(request, "createcourse.html")
+    form = forms.CourseForm
+    if request.method == "POST":
+        form = forms.CourseForm(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
+    return render(request, "createcourse.html", {'form':form})
+
+
+@login_required(login_url='/')
+def showcourse(request):
+    course_list = Course.objects.order_by('name')
+    return render(request, 'showcourse.html', context={'course_list':course_list})
+

@@ -17,5 +17,17 @@ class Course(models.Model):
     teacher = models.CharField(max_length=264)
     start_time = models.TimeField()
     end_time = models.TimeField()
-    first_day = models.CharField(max_length=264)
-    second_day = models.CharField(max_length=264, blank=True)
+    first_day = models.IntegerField(choices=[
+        (0, 'saturday'),
+        (1, 'sunday'),
+        (2, 'monday'),
+        (3, 'tuesday'),
+        (4, 'wednesday'),
+    ])
+    second_day = models.IntegerField(choices=[
+        (0, 'saturday'),
+        (1, 'sunday'),
+        (2, 'monday'),
+        (3, 'tuesday'),
+        (4, 'wednesday'),
+    ], blank=True)

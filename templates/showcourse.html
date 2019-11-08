@@ -1,7 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <form id="all_courses">
-
-    </form>
+    <div id="all_courses">
+        {% for x in course_list %}
+            <div class="{{ x.course_number }}_{{ x.group_number }}">
+                <h4>{{ x.name }}</h4>
+                <div>{{ x.department }}</div>
+                <div>{{ x.first_day }} {{ x.second_day }}</div>
+                <div>{{ x.start_time }}</div>
+                <div>{{ x.teacher }}</div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
