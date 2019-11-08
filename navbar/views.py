@@ -66,7 +66,7 @@ def contacted(request):
 @login_required(login_url='/')
 def log_out(request):
     logout(request)
-    return first_page(request)
+    return redirect("/")
 
 
 def panel(request):
