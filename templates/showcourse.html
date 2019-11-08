@@ -17,4 +17,15 @@
             </div>
         {% endfor %}
     </div>
+    <div id="search_result">
+        {% for y in temp %}
+            <div class="{{ y.course_number }}_{{ y.group_number }}">
+                <h4>{{ y.name }}</h4>
+                <div>{{ y.department }}</div>
+                <div>{{ y.first_day }} {{ y.second_day }}</div>
+                <div>{{ y.start_time }}</div>
+                <div>{{ y.teacher }}</div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

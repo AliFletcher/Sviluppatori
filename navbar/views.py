@@ -108,10 +108,9 @@ def createcourse(request):
 def showcourse(request):
     course_list = Course.objects.order_by('name')
     if request.method == "POST":
-        temp = course_list
-        course_list = []
-        for course in temp:
+        temp = []
+        for course in course_list:
             if request.POST['search_query'] in course.department:
-                course_list.append(course)
-    return render(request, 'showcourse.html', context={'course_list': course_list})
+                temp.append(course)
+    return render(request, 'showcourse.html', context={'course_list': course_list, "temp": temp})
 
