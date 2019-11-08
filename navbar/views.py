@@ -1,5 +1,6 @@
-from django.contrib.auth import login, authenticate
-from django.shortcuts import render
+from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.models import User
+from django.shortcuts import render, redirect
 from navbar import forms
 
 
@@ -17,8 +18,16 @@ def sign_up_page(request):
         if form.is_valid():
             form.save(commit=True)
             return first_page(request)
+        else:
+            try:
+                User.objects.get(username=form.cleaned_data['username'])
+            except KeyError:
+                return render(request, "sign_up.html", {'form': form, "error": 2})
+            except User.DoesNotExist:
+                pass
+            return render(request, "sign_up.html", {'form': form, "error": 1})
 
-    return render(request, "sign_up.html", {'form': form})
+    return render(request, "sign_up.html", {'form': form, "error": 0})
 
 
 def log_in(request):
@@ -28,15 +37,11 @@ def log_in(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return loged_in(request)
+            return redirect("/")
         else:
             return render(request, "login.html", {"error": True})
     else:
         return render(request, "login.html", {"error": False})
-
-
-def loged_in(request):
-    return render(request, "loged_in.html")
 
 
 def contact_us(request):
@@ -45,3 +50,12 @@ def contact_us(request):
 
 def contacted(request):
     return render(request, "contacted.html")
+
+
+def log_out(request):
+    logout(request)
+    return redirect("/")
+
+
+def panel(request):
+    return render(request, "panel.html")

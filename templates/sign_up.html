@@ -6,4 +6,14 @@
         {% csrf_token %}
         <button name="submit">Submit</button>
     </form>
+
+    {% if error != 0 %}
+        <div id="errors" style="direction: rtl">
+            {% if error == 1 %}
+                گذرواژه و تکرار گذرواژه یکسان نیستند
+            {% else %}
+                نام کاربری شما در سیستم موجود است
+            {% endif %}
+        </div>
+    {% endif %}
 {% endblock %}

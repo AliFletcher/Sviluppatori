@@ -26,5 +26,6 @@ urlpatterns = [
     url(r'^contact_us', views.contact_us),
     url(r'^contacted', views.contacted),
     url(r'^login', views.log_in),
-    url(r'^loged_in', views.loged_in),
+    url(r'^logout', views.log_out),
+    url(r'^panel', views.panel),
 ]

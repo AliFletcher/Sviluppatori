@@ -6,22 +6,27 @@
 </head>
 <body>
 
-    <div id="navbar">
-        <p>
-            {% block login_reg %}
-            <a id="login" href="/login/">Log In</a>
-            <a id="register" href="/sign_up/">Sign Up</a>
-            {% endblock %}
-            <span style="float: right">
+<div id="navbar">
+    <p>
+        {% block login_reg %}
+            {% if not request.user.is_authenticated %}
+                <a id="login" href="/login/">Log In</a>
+                <a id="register" href="/sign_up/">Sign Up</a>
+            {% else %}
+                <a id="logout" href="/logout/">Log Out</a>
+                <a id="panel" href="/panel/">Panel</a>
+            {% endif %}
+        {% endblock %}
+        <span style="float: right">
                 <a id="homepage" href="/">Home Page</a>
                 <a id="contact_us" href="/contact_us/">Contact Us</a>
             </span>
-        </p>
-    </div>
+    </p>
+</div>
 
-    <div id="content">
-        {% block content %}{% endblock %}
-    </div>
+<div id="content">
+    {% block content %}{% endblock %}
+</div>
 
 </body>
 </html>

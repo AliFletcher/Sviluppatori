@@ -1,8 +1,8 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, User
+from django.contrib.auth.forms import User
 
 
-class SignUpForm(UserCreationForm):
+class SignUpForm(forms.ModelForm):
     password1 = forms.CharField(label="Password",
                                 widget=forms.PasswordInput)
     password2 = forms.CharField(label="Password confirmation",
@@ -20,7 +20,7 @@ class SignUpForm(UserCreationForm):
         return password2
 
     def save(self, commit=True):
-        user = super(UserCreationForm, self).save(commit=False)
+        user = super(forms.ModelForm, self).save(commit=False)
         user.set_password(self.cleaned_data["password1"])
         if commit:
             user.save()
